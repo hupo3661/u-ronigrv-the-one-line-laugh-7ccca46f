@@ -13,6 +13,10 @@ LINE = "I asked my smart speaker to play something relaxing, and it started read
 def validate(line: str) -> None:
     if not line.strip():
         raise SystemExit("Invalid line: entry must be non-empty.")
+    if line != line.strip():
+        raise SystemExit(
+            "Invalid line: entry must not have leading or trailing whitespace."
+        )
     if len(line) > 200:
         raise SystemExit(
             f"Invalid line: {len(line)} characters, over the 200 limit."
